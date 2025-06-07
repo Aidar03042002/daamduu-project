@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Kod Tarayıcı | Daamduu Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .scan-area {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="bg-dark text-white text-center py-4 mb-4">
+    <h2 class="mb-4"><i class="fas fa-qrcode me-2"></i>
+      <span data-lang-tr="QR Kod Tarayıcı" data-lang-kg="QR код сканери"></span>
+    </h2>
+    <p class="mb-3 text-muted" data-lang-tr="Kamerayı Kullanarak QR Kodu Tarayın." data-lang-kg="Камераны колдонуп QR код сканда."></p>
+    <div class="language-switcher">
+      <a href="?lang=kg" class="lang-link" id="kg-link">KG</a>
+      <span class="divider">|</span>
+      <a href="?lang=tr" class="lang-link" id="tr-link">TR</a>
+    </div>
+  </header>
+  <main class="container text-center scan-area">
+
+
+    <div id="reader"></div>
+    <p id="qr-result" class="mt-4 text-success fw-bold"></p>
+
+    <div class="mt-4">
+      <a href="admin.html" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-2"></i> 
+        <span data-lang-tr="Yönetici Paneline Dön" data-lang-kg="Админ панелге кайтуу"></span>
+      </a>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      document.getElementById("qr-result").innerText = "QR okundu: " + decodedText;
+      html5QrCode.stop();
+    }
+
+    const html5QrCode = new Html5Qrcode("reader");
+    Html5Qrcode.getCameras().then(devices => {
+      if (devices && devices.length) {
+        const cameraId = devices[0].id;
+        html5QrCode.start(cameraId, { fps: 10, qrbox: 250 }, onScanSuccess)
+          .catch(err => {
+            document.getElementById("qr-result").innerText = "Kamera başlatılamadı: " + err;
+          });
+      }
+    }).catch(err => {
+      document.getElementById("qr-result").innerText = "Kamera bulunamadı: " + err;
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+      // Yazıları güncelle
+      document.querySelectorAll('[data-lang-tr]').forEach(el => {
+        el.textContent = el.getAttribute(`data-lang-${lang}`);
+      });
+
+      // Placeholder'ları güncelle
+      document.querySelectorAll("input[data-placeholder-tr]").forEach(input => {
+        const newPlaceholder = input.getAttribute(`data-placeholder-${lang}`);
+        if (newPlaceholder) {
+          input.setAttribute("placeholder", newPlaceholder);
+        }
+      });
+
+      // Aktif dil linkini vurgula
+      const activeLink = document.getElementById(`${lang}-link`);
+      if (activeLink) activeLink.classList.add("active");
+
+      // Logo değişimi (eğer varsa)
+      const logo = document.getElementById('logo-img');
+      if (logo) {
+        logo.src = lang === 'kg'
+          ? "images/Daamduu Tamak logo.png"
+          : "images/Lezzetli Yemek logo.png";
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+
+</html>

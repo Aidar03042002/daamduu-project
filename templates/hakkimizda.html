@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Hakkımızda | Daamduu Yemek</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive-style.css" />
+  <style>
+    .btn-outline-warning.active {
+      box-shadow: none !important;
+      outline: none !important;
+      border: none !important;
+      background-color: #ffc107;
+      color: black;
+      font-weight: bold;
+      min-width: max-content;
+    }
+
+    .btn-group {
+      flex-wrap: nowrap !important;
+      overflow-x: auto;
+    }
+
+    .btn-group .btn {
+      white-space: nowrap;
+      min-width: max-content;
+      flex: 0 0 auto;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+
+    .hide-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scroll {
+      -ms-overflow-style: none;
+      /* IE/Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .scroll-wrapper {
+      max-width: 100vw;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav class="navbar navbar-expand-lg navigation-wrap">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img id="logo-img" src="images/Daamduu Tamak logo.png" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-stream navbar-toggler-icon pt-3"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="home.html" data-lang-tr="Ana Sayfa"
+                data-lang-kg="Башкы бет"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bugun-menu.html" data-lang-tr="Bugün Menüde" data-lang-kg="Бүгүнкү меню"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="haftalik-menu.html" data-lang-tr="Haftalık Menü"
+                data-lang-kg="Жумалык меню"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="hakkimizda.html" data-lang-tr="Hakkımızda" data-lang-kg="Биз жөнүндө"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="takim.html" data-lang-tr="Takım" data-lang-kg="Курам"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-1" href="index.html">
+                <i class="fas fa-sign-out-alt"></i>
+                <span data-lang-tr="Çıkış Yap" data-lang-kg="Чыгуу"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <a href="?lang=kg" class="lang-link" id="kg-link">KG</a>
+        <span class="divider">|</span>
+        <a href="?lang=tr" class="lang-link" id="tr-link">TR</a>
+      </div>
+    </nav>
+  </header>
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-section wrapper">
+      <div class="container">
+        <div class="text-content text-center mt-4 pb-5">
+          <h2 data-lang-tr="Hakkımızda" data-lang-kg="Биз жөнүндө"></h2>
+          <!-- <p data-lang-tr="Hakkımızda"
+            data-lang-kg="Бул жерде кампусубузда жайгашкан ашкана, баарлашуу жайы, чай бакчасы, бешбармак боз үйү, кантин жана кафетериялар тууралуу маалыматтарды аласыз.">
+          </p> -->
+        </div>
+        <!-- Sekmeler -->
+        <div class="d-flex justify-content-center mt-1 mb-5">
+          <div class="scroll-wrapper overflow-auto hide-scroll">
+            <div class="btn-group flex-nowrap" role="group">
+              <button class="btn btn-outline-warning active" onclick="showSection('kampus')" data-lang-tr="Kampüs"
+                data-lang-kg="Кампус"></button>
+              <button class="btn btn-outline-warning" onclick="showSection('yemekhane')" data-lang-tr="Yemekhane"
+                data-lang-kg="Ашкана"></button>
+              <button class="btn btn-outline-warning" onclick="showSection('kiraathane')"
+                data-lang-tr="Millet Kıraathanesi" data-lang-kg="Баарлашуу жайы"></button>
+              <button class="btn btn-outline-warning" onclick="showSection('oba')" data-lang-tr="Oba Çay Bahçesi"
+                data-lang-kg="Боз үй чай бакчасы"></button>
+              <button class="btn btn-outline-warning" onclick="showSection('besparmak')" data-lang-tr="Beşparmak Çadırı"
+                data-lang-kg="Бешбармак боз үйү"></button>
+              <button class="btn btn-outline-warning" onclick="showSection('kantin')"
+                data-lang-tr="Kantin ve Kafeteryalar" data-lang-kg="Кантин жана кафетериялар"></button>
+            </div>
+          </div>
+        </div>
+        <!-- Dinamik İçerik Alanı -->
+        <div class="row align-items-center" id="dynamic-content">
+          <div class="col-lg-6 col-md-12 mb-lg-0 mb-4">
+            <img id="section-image" src="images/ktmu.png" class="img-fluid rounded shadow-image">
+          </div>
+          <div class="col-lg-6 col-md-12 ps-lg-5 text-overlay">
+            <h2 id="section-title" data-lang-tr="Kampüs" data-lang-kg="Кампус">Kampüs</h2>
+            <p style="text-align: justify;" id="section-description"
+              data-lang-tr="Kampüsümüz Jal mikro bölgesinde yer almaktadır."
+              data-lang-kg="Кампусубуз Жал кичи аймагында жайгашкан.">
+              Кампусубуз Жал кичи аймагында жайгашкан.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonial Section -->
+  <section id="testimonial">
+    <div class="wrapper testimonial-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-lg-10">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                  aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="carousel-caption">
+                    <img src="images/review/yemekhane.jpg" alt="review" />
+                    <h5 data-lang-tr="Yemekhane" data-lang-kg="Ашкана"></h5>
+                    <p style="text-align: justify;" data-lang-tr="Üniversitemizin
+                    öğrencilerinin ve çalışanlarının yemek
+                    ihtiyaçlarını gidermek maksadıyla kampüsümüz dâhilinde ve Merkez Bina’da bulunan
+                    yemekhanelerde hizmet sunulmaktadır. Üniversitemizin öğrenci evlerinde
+                    barınan öğrenciler için de ücretsiz kahvaltı verilmektedir. Üniversitemiz
+                    öğrencileri ile idari ve akademik personelinin sağlıklı, dengeli ve hijyenik
+                    beslenmesini amaçlamaktadır."
+                      data-lang-kg="Университеттин студенттеринин жана кызматкерлеринин тамактануусун камсыздоо максатында студенттик шаарчанын аймагында жана башкы корпусунда жайгашкан ашканаларда тейлөө кызматы көрсөтүлөт. Университеттин студенттери менен кызматкерлеринин пайдалуу, туура жана гигиеналык талаптарга жооп берген шартта тамактануусун камсыздайт.">
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="carousel-caption">
+                    <img src="images/review/Oba çay bahçe.jpg" alt="review" />
+                    <h5 data-lang-tr="Oba Çay Bahçesi" data-lang-kg="Боз үй чай бакчасы"></h5>
+                    <p style="text-align: justify;" data-lang-tr="KTMÜ öğrencileri ile
+                    akademik ve idari personelin hızlıca beslenme
+                    ihtiyacını karşılamak üzere hizmet sunmakta olan
+                    yerleşkelerin biri - 2020-2021 Eğitim-Öğretim yılında faaliyete geçen Oba
+                    Çay Bahçesidir. Her gün sabah 09:00-23:00 saatleri arasında
+                    içeceklerle birlikte, çeşitli gıda ürünleri satışa sunulmaktadır."
+                      data-lang-kg="Кыргыз-Түрк Манас университетинин студенттеринин, академиялык жана административдик персоналынын тез тамактануусун камсыздоочу жайлардын бири - 2020-2021 Окуу жылында ачылган Боз үй чай бакчасы. Чай бакчасында күн сайын саат 09:00дон 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат. ">
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="carousel-caption">
+                    <img src="images/review/kıraathane1.jpg" alt="review" />
+                    <h5 data-lang-tr="Türk Dünyası Millet Kıraathanesi" data-lang-kg="Окуу жана баарлашуу борбору"></h5>
+                    <p style="text-align: justify;" data-lang-tr="Türk Dünyası Millet
+                    Kıraathanesinde ürün çeşitliliğine özen gösterilerek
+                    öğrencilerimize ve personellere yiyecek ve içecek servisi sunmaktadır.
+                    Kantinden yararlananların sayısı günlük 2000’den 3000’e kadar sayıya
+                    ulaşabilmektedir. Her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet
+                    verilmektedir."
+                      data-lang-kg="Буфет кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат.">
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="carousel-caption">
+                    <img src="images/review/kantin.png" alt="review" />
+                    <h5 data-lang-tr="Kantin ve Kafeteryalar" data-lang-kg="Кантин жана кафетериялар"></h5>
+                    <p style="text-align: justify;" data-lang-tr="Üniversitemizin
+                    kantin-kafeteryalarından yararlananların sayısı
+                    günlük 2000’den 3000’e kadar sayıya ulaşabilmektedir. Öğrenciler ve çalışanlar için
+                    yiyecek ve içecek servisi bir çok kafeteryada
+                    hızlı yiyecek (fastfood) türlerini her gün sabah saat 08:00'dan akşam saat
+                    23:00'a kadar sunmaktadır."
+                      data-lang-kg="Университеттин буфеттеринин кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Буфеттерде студенттердин тез тамактануусун камсыздоо үчүн эртең мененки саат 08:00дон кечки 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат.">
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="carousel-caption">
+                    <img src="images/review/Beşparmak.jpg" alt="review" />
+                    <h5 data-lang-tr="Beşparmak Çadırı" data-lang-kg="Бешбармак боз үйү"></h5>
+                    <p style="text-align: justify;" data-lang-tr="2023 Aralık ayında
+                    hizmete açılan Beşparmak Çadırında çeşitli hazır
+                    ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, gözleme, pide, pizza çeşitleri,
+                    tost, krep ve tatlı türleri vb. pek çok değişik karışık gıda ürünleri
+                    hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını
+                    gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet
+                    verilmektedir."
+                      data-lang-kg="2023-жылдын декабрь айында ачылган Бешбармак боз үйүндө ар түрдүү даяр азыктар, кондитердик азыктар, ысык жана муздак суусундуктар, пиде, пицца, лахмажун, гөзлеме, тост жб. көптөгөн ассортимент сунушталат. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө.">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Book Section -->
+  <section id="book-food">
+    <div class="book-food">
+      <div class="container book-food-text">
+        <div class="row text-center">
+          <div class="col-lg-12 col-md-12">
+            <h2 data-lang-tr="Tutkuyla çalışan aşçılarımız tarafından her gün taze olarak pişirilir."
+              data-lang-kg="Биздин  ашпозчулар тарабынан күн сайын жаңыдан даярдалат."></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer py-5 bg-black text-white">
+    <div class="container text-center">
+      <a href="#" class="footer-link" data-lang-tr="Fen Fakültesi" data-lang-kg="Табигый илимдер факультети"></a><br>
+      <a href="#" class="footer-link" data-lang-tr="Uygulamalı Matematik ve Enformatik Bölümü"
+        data-lang-kg="Колдонмо математика жана информатика бөлүмү"></a>
+      <div class="footer-social pt-4">
+        <a href="#"><i class="fab fa-facebook-f me-2"></i></a>
+        <a href="#"><i class="fab fa-twitter me-2"></i></a>
+        <a href="#"><i class="fab fa-youtube me-2"></i></a>
+        <a href="#"><i class="fab fa-telegram me-2"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div><br>
+      <a href="https://beslenme.manas.edu.kg" class="footer-link" data-lang-tr="KTMÜ Beslenme Hizmetleri"
+        data-lang-kg="КТМУ Тамак-аш тейлөө кызматы"></a>
+    </div>
+  </footer>
+
+  <script>
+    const contentMap = {
+      kampus: {
+        title: {
+          tr: "Kampüs",
+          kg: "Кампус"
+        },
+        description: {
+          tr: "Kampüsümüz Jal mikro bölgesinde yer almaktadır.",
+          kg: "Кампусубуз Жал кичи аймагында жайгашкан."
+        },
+        image: "images/ktmu.png"
+      },
+      yemekhane: {
+        title: {
+          tr: "Yemekhane",
+          kg: "Ашкана"
+        },
+        description: {
+          tr: "Üniversitemizin öğrencilerinin ve çalışanlarının yemek ihtiyaçlarını gidermek maksadıyla kampüsümüz dâhilinde ve Merkez Bina’da bulunan yemekhanelerde hizmet sunulmaktadır. Üniversitemizin öğrenci evlerinde barınan öğrenciler için de ücretsiz kahvaltı verilmektedir. Hayırseverlik amacıyla bazı yardımsever çalışanlarımız tarafından kafeteryalarda belirli bir öğrenci kategorisi için de ücretsiz yiyecek verilmektedir. Bu hizmetler özel biçimde hazırlanan elektronik/dijital programa uygun olarak yürütülmektedir.",
+          kg: "Университеттин студенттеринин жана кызматкерлеринин тамактануусун камсыздоо максатында студенттик шаарчанын аймагында жана башкы корпусунда жайгашкан ашканаларда тейлөө кызматы көрсөтүлөт.  Университеттин жатаканасында жашаган студенттер үчүн акысыз  эртең мененки тамак сунушталат. Кайрымдуулук иш катары кызматкерлерибиздин өз ыктыярдуу көмөгү менен кафетерияларда белгилүү бир категориядагы студенттер үчүн акысыз тейлөө кызматы жүргүзүлөт. Бул кызмат атайын жасалып чыккан электрондук программа аркылуу негизделген."
+        },
+        image: "images/about/yemekhane.png"
+      },
+      oba: {
+        title: {
+          tr: "Oba Çay Bahçesi",
+          kg: "Боз үй чай бакчасы"
+        },
+        description: {
+          tr: "Kırgızistan-Türkiye Manas Üniversitesi öğrencileri ile akademik ve idari personelin hızlıca beslenme ihtiyacını karşılamak üzere hizmet sunmakta olan yerleşkelerin biri - 2020-2021 Eğitim-Öğretim yılında faaliyete geçen Oba Çay Bahçesidir. Doğayla iç içe, huzurlu ortamıyla öğrencilerin en sevdiği dinlenme alanıdır. Çay Bahçesinde her gün sabah 09:00-23:00 saatleri arasında içeceklerle birlikte, çeşitli gıda ürünleri satışa sunulmaktadır.",
+          kg: "Кыргыз-Түрк Манас университетинин студенттеринин, академиялык жана административдик персоналынын тез тамактануусун камсыздоочу жайлардын бири - 2020-2021 Окуу жылында ачылган Боз үй чай бакчасы. Чай бакчасында күн сайын саат 09:00дон 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат. "
+        },
+        image: "images/about/Çay bahçe.png"
+      },
+      kiraathane: {
+        title: {
+          tr: "Türk Dünyası Millet Kıraathanesi",
+          kg: "Окуу жана баарлашуу борбору"
+        },
+        description: {
+          tr: "Türk Dünyası Millet Kıraathanesinde ürün çeşitliliğine özen gösterilerek öğrencilerimize ve personellere yiyecek ve içecek servisi sunmaktadır. Kantinden yararlananların sayısı günlük 2000’den 3000’e kadar sayıya ulaşabilmektedir. Kıraathanede hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, pide, pizza çeşitleri, köfte, lahmacun, sandviç, tost, salata, tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet verilmektedir. Satışa sunulan yiyecek ve içeceklerin her birinden numune alınıp sıhhi kurallara uygun biçimde 72 saat süreyle muhafaza ve kontrol edilmektedir.",
+          kg: "Окуу жана баарлашуу борборунда студенттерибизге жана персоналдарга ар түрдүү азыктар сунушталып кызмат берилүүдө. Буфет кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Окуу жана баарлашуу борбору кафетериясында кондитердик азыктар, нан азыктары, ысык жана муздак суусундуктар, пиде, пицца, лахмажун, сэндвич, тост, салат, таттуулар жб. көптөгөн ассортимент сунушталат. Күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат."
+        },
+        image: "images/about/kıraathane.png"
+      },
+      kantin: {
+        title: {
+          tr: "Kantin ve Kafeteryalar",
+          kg: "Кантин жана кафетериялар"
+        },
+        description: {
+          tr: "Üniversitemizin kantin-kafeteryalarından yararlananların sayısı günlük 2000’den 3000’e kadar sayıya ulaşabilmektedir. Kafeteryalarda hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, pide, pizza, lahmacun, sandviç, tost, salata, tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanıp isteklilere satılmaktadır. Kantin-Kafeteryalarda öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için her gün sabah saat 08:00'dan akşam saat 23:00'a kadar içeceklerle birlikte çeşitli gıda ürünleri satışa sunulmaktadır. Satışa sunulan yiyecek ve içeceklerin her birinden numune alınıp sıhhi kurallara uygun biçimde 72 saat süreyle muhafaza ve kontrol edilmektedir.",
+          kg: "Университеттин буфеттеринин кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Кафетерияларда  кондитердик азыктар, нан азыктары, ысык жана муздак суусундуктар, пиде, пицца, сэндвич, лахмажун, тост, салат,таттуулар жб. көптөгөн ассортимент сунушталат. Буфеттерде студенттердин тез тамактануусун камсыздоо үчүн эртең мененки саат 08:00дон кечки 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат."
+        },
+        image: "images/about/kantin.png"
+      },
+      besparmak: {
+        title: {
+          tr: "Beşparmak Çadırı",
+          kg: "Бешбармак боз үйү"
+        },
+        description: {
+          tr: "2023 Aralık ayında hizmete açılan Beşparmak Çadırında çeşitli hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, gözleme, pide, pizza çeşitleri, tost, krep ve tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet verilmektedir.",
+          kg: "2023-жылдын декабрь айында ачылган Бешбармак боз үйүндө ар түрдүү даяр азыктар - нан азыктары, кондитердик азыктар, ысык жана муздак суусундуктар, пиде, пицца, лахмажун, гөзлеме, тост, куймактын түрлөрү жб. көптөгөн ассортимент сунушталат. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө."
+        },
+        image: "images/about/Beşparmak.png"
+      }
+    };
+
+
+    function showSection(key) {
+      const section = contentMap[key];
+      const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+      document.getElementById("section-title").textContent = section.title[lang];
+      document.getElementById("section-description").textContent = section.description[lang];
+      document.getElementById("section-image").src = section.image;
+
+      document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+
+  </script>
+  <script>
+    const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+    // Metin çevirilerini uygula
+    document.querySelectorAll('[data-lang-tr]').forEach(el => {
+      el.textContent = el.getAttribute(`data-lang-${lang}`);
+    });
+
+    // Aktif dil bağlantısını işaretle
+    const activeLink = document.getElementById(`${lang}-link`);
+    if (activeLink) activeLink.classList.add("active");
+
+    // LOGO DEĞİŞİMİ
+    const logo = document.getElementById('logo-img');
+    if (lang === 'kg') {
+      logo.src = "images/Daamduu Tamak logo.png"; // Kırgızca logo
+    } else {
+      logo.src = "images/Lezzetli Yemek logo.png"; // Türkçe logo
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

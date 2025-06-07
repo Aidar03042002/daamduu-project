@@ -1,11 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Вход через Google</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giriş Yap | Daamduu Yemek</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+    <!-- Proje CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive-style.css">
+
+    <style>
+        body {
+            background: url('images/bg/bg-21.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            backdrop-filter: blur(15px);
+            background-color: rgba(255, 255, 255, 0.74);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-orange {
+            background-color: #ff6600;
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background-color: #e65c00;
+        }
+
+        .google-btn {
+            background-color: #db4437;
+            color: white;
+        }
+
+        .google-btn:hover {
+            background-color: #c1351d;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Войти через Google</h2>
-    <a href="{% url 'social:begin' 'google-oauth2' %}">Войти с помощью Google</a>
+
+    <div class="container">
+        <div class="language-switcher">
+            <a href="?lang=kg" class="lang-link" id="kg-link">KG</a>
+            <span class="divider">|</span>
+            <a href="?lang=tr" class="lang-link" id="tr-link">TR</a>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card text-center">
+
+                    <!-- Logo -->
+                    <img id="logo-img" src="images/Daamduu Tamak logo.png" alt="Logo"
+                        class="img-fluid mx-auto d-block mb-3" style="max-width: 120px;">
+
+                    <!-- Hoşgeldiniz Yazısı -->
+                    <h5 class="text-muted mb-4" data-lang-tr="Sayfamıza Hoş Geldiniz"
+                        data-lang-kg="Биздин баракчага кош келиңиз"></h5>
+
+                    <!-- Giriş Formu -->
+                    <form onsubmit="redirectToIndex(event)">
+                        <div class="form-group mb-3">
+                            <input type="email" class="form-control" required data-placeholder-tr="E-posta adresiniz(@manas.edu.kg)"
+                                data-placeholder-kg="Электрондук почтаңыз(@manas.edu.kg)" placeholder="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="password" class="form-control" required data-placeholder-tr="Şifreniz"
+                                data-placeholder-kg="Сырсөзүңүз" placeholder="">
+                        </div>
+                        <p class="mt-2">
+                            <a href="reset-password.html" class="text-decoration-none text-muted"
+                                style="font-size: 0.9rem;">
+                                <i class="bi bi-key-fill me-1"></i>
+                                <span data-lang-tr="Şifremi unuttum" data-lang-kg="Сырсөздү унуттум"></span>
+                            </a>
+                        </p>
+                        <button type="submit" class="btn btn-orange w-100" data-lang-tr="Giriş Yap"
+                            data-lang-kg="Кирүү"></button>
+                    </form>
+                    <p class="mt-3 text-center">
+                        <span data-lang-tr="Kayıtlı hesabınız yok mu?" data-lang-kg="Катталган аккаунтуңуз жокпу?"></span>
+                        <a href="register.html" class="fw-bold text-decoration-none" data-lang-tr="Kayıt Ol"
+                            data-lang-kg="Катталуу"></a>
+                    </p>
+                    <hr class="my-4">
+
+                    <!-- Google ile Giriş Butonu -->
+                    <!-- <button class="btn google-btn w-100" onclick="redirectToIndex(event)">
+                        <i class="bi bi-google me-2"></i>
+                        <span data-lang-tr="Google ile Giriş Yap" data-lang-kg="Google менен кирүү">Google ile Giriş
+                            Yap</span>
+                    </button>
+                    <button class="btn btn-dark w-100 mt-2" onclick="redirectToIndex(event)">
+                        <i class="fab fa-apple me-2"></i>
+                        <span data-lang-tr="Apple ile Giriş Yap" data-lang-kg="Apple менен кирүү">Google ile Giriş
+                            Yap</span>
+                    </button> -->
+                    <!-- Admin girişi butonu -->
+                    <!-- <button class="btn google-btn w-100" onclick="redirectToIndex(event)" href="admin-login.html">
+                        <i class="bi bi-person-gear me-2"></i> Admin olarak giriş yap
+                    </button> -->
+                    <a href="admin-login.html" class="btn btn-outline-dark w-100 mt-3">
+                        <i class="bi bi-person-gear me-2"></i>
+                        <span data-lang-tr="Admin olarak giriş yap" data-lang-kg="Админ катары кирүү"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yönlendirme Scripti -->
+    <script>
+        function redirectToIndex(event) {
+            event.preventDefault();
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 500);
+        }
+    </script>
+    <script>
+        const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+        // Metin çevirilerini uygula
+        document.querySelectorAll('[data-lang-tr]').forEach(el => {
+            el.textContent = el.getAttribute(`data-lang-${lang}`);
+        });
+
+        // Aktif dil bağlantısını işaretle
+        const activeLink = document.getElementById(`${lang}-link`);
+        if (activeLink) activeLink.classList.add("active");
+
+        // LOGO DEĞİŞİMİ
+        const logo = document.getElementById('logo-img');
+        if (lang === 'kg') {
+            logo.src = "images/Daamduu Tamak logo.png"; // Kırgızca logo
+        } else {
+            logo.src = "images/Lezzetli Yemek logo.png"; // Türkçe logo
+        }
+
+        document.querySelectorAll("input[data-placeholder-tr]").forEach(input => {
+            const newPlaceholder = input.getAttribute(`data-placeholder-${lang}`);
+            if (newPlaceholder) {
+                input.setAttribute("placeholder", newPlaceholder);
+            }
+        });
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

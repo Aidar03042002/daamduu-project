@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menü Yönetimi | Daamduu Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive-style.css" />
+</head>
+
+<body>
+  <header class="bg-dark text-white text-center py-4 mb-4">
+    <h2>
+      <i class="fa-solid fa-utensils me-2"></i>
+      <span data-lang-tr="Menüler" data-lang-kg="Менюлар"></span>
+    </h2>
+    <p data-lang-tr="Menüleri düzenleyin." data-lang-kg="Менюларды түзөтүңүз."></p>
+    <div class="language-switcher">
+      <a href="?lang=kg" class="lang-link" id="kg-link">KG</a>
+      <span class="divider">|</span>
+      <a href="?lang=tr" class="lang-link" id="tr-link">TR</a>
+    </div>
+  </header>
+  <div>
+    <main class="container py-5">
+      <form class="mb-4" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="menu-date" data-lang-tr="Tarih Seçiniz" data-lang-kg="Датаны тандаңыз"></label>
+          <input type="date" class="form-control" id="menu-date">
+
+        </div>
+        <div class="mb-3">
+          <label for="menu-item" class="form-label" data-lang-tr="Yemek Adı" data-lang-kg="Тамактын аты"></label>
+          <input type="text" class="form-control" id="menu-item" required data-placeholder-tr="Yemeğin adını giriniz"
+            data-placeholder-kg="Тамактын атын киргизиңиз">
+        </div>
+        <div class="mb-3">
+          <label for="calorie" class="form-label" data-lang-tr="Kalori" data-lang-kg="Калория"></label>
+          <input type="number" class="form-control" id="calorie" required data-placeholder-tr="Kalori değeri"
+            data-placeholder-kg="Калория мааниси">
+        </div>
+        <div class="mb-3">
+          <label for="food-image" class="form-label" data-lang-tr="Yemek Resmi" data-lang-kg="Тамактын сүрөтү"></label>
+          <input type="file" class="form-control" id="food-image" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-success" data-lang-tr="Ekle" data-lang-kg="Кошуу"></button>
+      </form>
+      <table class="table table-bordered align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th data-lang-tr="Yemek Adı" data-lang-kg="Тамактын аты"></th>
+            <th data-lang-tr="Kalori" data-lang-kg="Калория"></th>
+            <th data-lang-tr="Görsel" data-lang-kg="Сүрөт"></th>
+            <th data-lang-tr="Tarih / Gün" data-lang-kg="Дата / Күн"></th>
+            <th data-lang-tr="İşlem" data-lang-kg="Амал"></th>
+          </tr>
+        </thead>
+
+        <tbody id="menu-table">
+          <!-- JS ile eklenecek satırlar buraya gelir -->
+          <tr>
+            <td data-lang-tr="Kavurma" data-lang-kg="Куурдак"><strong></strong></td>
+            <td><strong>361</strong></td>
+            <td>
+              <img src="images/yemek/Kavurma.jpg" alt="Kavurma"
+                style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+            </td>
+            <th data-lang-tr="25.05.2025 (Pazar)" data-lang-kg="25.05.2025 (Жекшемби)"></th>
+            <td>
+              <button class="btn btn-danger btn-sm delete-btn" data-lang-tr="Sil" data-lang-kg="Өчүрүү">Өчүрүү</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </main>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+      // Yazıları güncelle
+      document.querySelectorAll('[data-lang-tr]').forEach(el => {
+        el.textContent = el.getAttribute(`data-lang-${lang}`);
+      });
+
+      // Placeholder'ları güncelle
+      document.querySelectorAll("input[data-placeholder-tr]").forEach(input => {
+        const newPlaceholder = input.getAttribute(`data-placeholder-${lang}`);
+        if (newPlaceholder) {
+          input.setAttribute("placeholder", newPlaceholder);
+        }
+      });
+
+      // Aktif dil linkini vurgula
+      const activeLink = document.getElementById(`${lang}-link`);
+      if (activeLink) activeLink.classList.add("active");
+
+      // Logo değişimi (eğer varsa)
+      const logo = document.getElementById('logo-img');
+      if (logo) {
+        logo.src = lang === 'kg'
+          ? "images/Daamduu Tamak logo.png"
+          : "images/Lezzetli Yemek logo.png";
+      }
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+
+</html>

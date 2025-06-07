@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giriş Yap | Daamduu Yemek</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Proje CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive-style.css">
+
+  <style>
+    body {
+      background: url('images/bg/bg-21.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      backdrop-filter: blur(15px);
+      background-color: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .btn-orange {
+      background-color: #ff6600;
+      color: white;
+    }
+
+    .btn-orange:hover {
+      background-color: #e65c00;
+    }
+
+    .google-btn {
+      background-color: #db4437;
+      color: white;
+    }
+
+    .google-btn:hover {
+      background-color: #c1351d;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="language-switcher">
+    <a href="?lang=kg" class="lang-link" id="kg-link">KG</a>
+    <span class="divider">|</span>
+    <a href="?lang=tr" class="lang-link" id="tr-link">TR</a>
+  </div>
+  <div class="card text-center mx-auto" style="max-width: 400px; width: 100%;">
+    <img id="logo-img" src="images/Daamduu Tamak logo.png" alt="Logo" style="max-width: 100px;"
+      class="mb-3 d-block mx-auto">
+    <h4 class="mb-4" data-lang-tr="Admin Panel Girişi" data-lang-kg="Админ панелине кирүү">Admin Panel Girişi</h4>
+    <form onsubmit="handleAdminLogin(event)">
+      <input type="email" id="admin-email" class="form-control mb-3" placeholder="E-posta adresiniz"
+        data-placeholder-tr="E-posta adresiniz" data-placeholder-kg="Электрондук почтаңыз" required />
+      <input type="password" id="admin-password" class="form-control mb-3" placeholder="Şifreniz"
+        data-placeholder-tr="Şifreniz" data-placeholder-kg="Сырсөзүңүз" required />
+      <button type="submit" class="btn btn-orange w-100" data-lang-tr="Giriş Yap" data-lang-kg="Кирүү">Giriş
+        Yap</button>
+    </form>
+    <p id="login-error" class="text-danger mt-3" style="display:none;" data-lang-tr="E-posta ya da şifre hatalı!"
+      data-lang-kg="Почта же сырсөз туура эмес!">
+      E-posta ya da şifre hatalı!
+    </p>
+    <p class="mt-2">
+      <a href="reset-password-admin.html" class="text-decoration-none text-muted" style="font-size: 0.9rem;">
+        <i class="bi bi-key-fill me-1"></i>
+        <span data-lang-tr="Şifremi unuttum" data-lang-kg="Сырсөзүмдү унуттум"></span>
+      </a>
+    </p>
+  </div>
+
+  <!-- Yönlendirme Scripti -->
+  <script>
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('admin-email').value;
+      const password = document.getElementById('admin-password').value;
+
+      if (email === 'admin@manas.edu.kg' && password === '123456') {
+        window.location.href = 'admin.html';
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+      }
+    }
+  </script>
+  <script>
+    const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+    // Metin çevirilerini uygula
+    document.querySelectorAll('[data-lang-tr]').forEach(el => {
+      el.textContent = el.getAttribute(`data-lang-${lang}`);
+    });
+
+    // Aktif dil bağlantısını işaretle
+    const activeLink = document.getElementById(`${lang}-link`);
+    if (activeLink) activeLink.classList.add("active");
+
+    // LOGO DEĞİŞİMİ
+    const logo = document.getElementById('logo-img');
+    if (lang === 'kg') {
+      logo.src = "images/Daamduu Tamak logo.png"; // Kırgızca logo
+    } else {
+      logo.src = "images/Lezzetli Yemek logo.png"; // Türkçe logo
+    }
+
+    document.querySelectorAll("input[data-placeholder-tr]").forEach(input => {
+      const newPlaceholder = input.getAttribute(`data-placeholder-${lang}`);
+      if (newPlaceholder) {
+        input.setAttribute("placeholder", newPlaceholder);
+      }
+    });
+  </script>
+  <script>
+    const lang = new URLSearchParams(window.location.search).get('lang') || 'kg';
+
+    // Metin çevirilerini uygula
+    document.querySelectorAll('[data-lang-tr]').forEach(el => {
+      el.textContent = el.getAttribute(`data-lang-${lang}`);
+    });
+
+    // Aktif dil bağlantısını işaretle
+    const activeLink = document.getElementById(`${lang}-link`);
+    if (activeLink) activeLink.classList.add("active");
+
+    // LOGO DEĞİŞİMİ
+    const logo = document.getElementById('logo-img');
+    if (lang === 'kg') {
+      logo.src = "images/Daamduu Tamak logo.png"; // Kırgızca logo
+    } else {
+      logo.src = "images/Lezzetli Yemek logo.png"; // Türkçe logo
+    }
+
+    document.querySelectorAll("input[data-placeholder-tr]").forEach(input => {
+      const newPlaceholder = input.getAttribute(`data-placeholder-${lang}`);
+      if (newPlaceholder) {
+        input.setAttribute("placeholder", newPlaceholder);
+      }
+    });
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+
+</html>
