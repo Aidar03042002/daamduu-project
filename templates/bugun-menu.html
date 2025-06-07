@@ -142,49 +142,30 @@
   <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content p-4">
-        <h5 class="modal-title mb-3" id="paymentModalLabel" data-lang-tr="Kart ile Ödeme"
-          data-lang-kg="Карта менен төлөө">Kart ile Ödeme
+        <h5 class="modal-title mb-3" id="paymentModalLabel" data-lang-tr="Kart ile Ödeme" data-lang-kg="Карта менен төлөө">
+          Kart ile Ödeme
         </h5>
-        <div class="form-group mb-2">
-          <label data-lang-tr="Kart Üzerindeki İsim" data-lang-kg="Картадагы ысым">Kart Üzerindeki İsim</label>
-          <input type="text" class="form-control" data-placeholder-tr="Ad Soyad" data-placeholder-kg="Аты-жөнү"
-            placeholder="Ad Soyad" />
-        </div>
-        <div class="form-group mb-2">
-          <label data-lang-tr="Kart Numarası" data-lang-kg="Картанын номери">Kart Numarası</label>
-          <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" />
-        </div>
-        <div class="form-row d-flex justify-content-between mb-2">
-          <div class="form-group me-2 w-50">
-            <label data-lang-tr="Son Kullanma" data-lang-kg="Жарактуулук мөөнөтү">Son Kullanma</label>
-            <input type="text" class="form-control" placeholder="MM/YY" />
+        <form id="payment-form">
+          <div class="form-group mb-2">
+            <label data-lang-tr="Kart Üzerindeki İsim" data-lang-kg="Картадагы ысым">Kart Üzerindeki İsim</label>
+            <input type="text" id="cardholder-name" class="form-control" data-placeholder-tr="Ad Soyad" data-placeholder-kg="Аты-жөнү" placeholder="Ad Soyad" required />
           </div>
-          <div class="form-group w-50">
-            <label>CVV</label>
-            <input type="password" class="form-control" placeholder="123" maxlength="4" />
+          <div class="form-group mb-2">
+            <label data-lang-tr="Kart Bilgileri" data-lang-kg="Карта маалыматтары">Kart Bilgileri</label>
+            <div id="card-element" class="form-control"></div>
+            <div id="card-errors" class="text-danger mt-2" role="alert"></div>
           </div>
-        </div>
-        <button class="btn btn-success w-100 mt-3" id="confirm-payment" data-lang-tr="Ödemeyi Tamamla"
-          data-lang-kg="Төлөмдү бүтүрүү">Ödemeyi Tamamla</button>
+          <button type="submit" id="submit-payment" class="btn btn-success w-100 mt-3" data-lang-tr="Ödemeyi Tamamla" data-lang-kg="Төлөмдү бүтүрүү">
+            Ödemeyi Tamamla
+          </button>
+        </form>
       </div>
     </div>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const buyBtn = document.getElementById("buy-btn");
-      const paymentModal = new bootstrap.Modal(document.getElementById("paymentModal"));
 
-      buyBtn.addEventListener("click", function () {
-        paymentModal.show();
-      });
-
-      document.getElementById("confirm-payment").addEventListener("click", function () {
-        alert("Ödeme başarılı! QR kodunuz hazırlanıyor...");
-        paymentModal.hide();
-        // Buraya QR oluşturma fonksiyonun entegre edilebilir
-      });
-    });
-  </script>
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="{% static 'js/payment.js' %}"></script>
 
   <!-- Modal for QR enlarge -->
   <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
@@ -200,50 +181,17 @@
   <!-- JS -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const buyBtn = document.getElementById("confirm-payment");
-      const qrContainer = document.getElementById("qrcode");
-      const qrModal = new bootstrap.Modal(document.getElementById("qrModal"));
-      const qrModalImage = document.getElementById("qrModalImage");
+      const buyBtn = document.getElementById("buy-btn");
+      const paymentModal = new bootstrap.Modal(document.getElementById("paymentModal"));
 
       buyBtn.addEventListener("click", function () {
-        const now = new Date();
-        const qrText = "Gecis Bileti - Kullanici: Davronbek Taylakov - Tarih: " + now.toLocaleString();
+        paymentModal.show();
+      });
 
-        qrContainer.innerHTML = "";
-        qrContainer.style.display = "inline-block";
-
-        qrContainer.innerHTML = "";
-
-        qrContainer.style.display = "inline-block";
-        qrContainer.style.backgroundColor = "#ffffff";
-        qrContainer.style.padding = "12px";
-        qrContainer.style.borderRadius = "10px";
-        qrContainer.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.2)";
-        qrContainer.style.marginTop = "15px";
-
-        const tempDiv = document.createElement("div");
-        qrContainer.appendChild(tempDiv);
-
-        new QRCode(tempDiv, {
-          text: qrText,
-          width: 180,
-          height: 180,
-          colorDark: "#000",
-          colorLight: "#fff",
-          correctLevel: QRCode.CorrectLevel.H
-        });
-
-        tempDiv.style.cursor = "pointer";
-        tempDiv.addEventListener("click", () => {
-          const canvas = tempDiv.querySelector("canvas");
-          if (canvas) {
-            const imgDataUrl = canvas.toDataURL("image/png");
-            qrModalImage.src = imgDataUrl;
-            qrModal.show();
-          }
-        });
-
-        alert("Satın alma başarılı! QR kodunuz oluşturuldu! 🎉");
+      document.getElementById("confirm-payment").addEventListener("click", function () {
+        alert("Ödeme başarılı! QR kodunuz hazırlanıyor...");
+        paymentModal.hide();
+        // Buraya QR oluşturma fonksiyonun entegre edilebilir
       });
     });
   </script>

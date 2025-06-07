@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,8 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/responsive-style.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive-style.css' %}">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navigation-wrap">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img id="logo-img" src="static/images/Daamduu Tamak logo.png" alt="logo" />
+          <img id="logo-img" src="{% static 'images/Daamduu Tamak logo.png' %}" alt="logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +73,7 @@
             <p style="text-align: justify;" data-lang-tr="Sağlık Kültür Spor Dairesi Başkanlığına bağlı Kantin-Kafeterya birimi
             üniversitemizin öğrencileri ve
             çalışanlarının hijyenik şartlara uygun, faydalı gıdalarla ve doğru beslenmesi için gerekli imkânları
-            sağlamakla yükümlüdür. Yemek pişirme süreci Cengiz Aytmatov Kampüsü’nde bulunan Sosyal Tesisler’deki
+            sağlamakla yükümlüdür. Yemek pişirme süreci Cengiz Aytmatov Kampüsü'nde bulunan Sosyal Tesisler'deki
             mevcut binadaki yemekhanede devam etmektedir. Yemekhane Servis Hizmetleri Birimi öğrenciler, öğretim
             elemanları ve idari personelin öğle ve akşam yemeği ihtiyaçlarını karşılamaktadır. Üniversitemiz
             tarafından hazırlanan bir aylık menü, doğru ve yeterli beslenme usûllerine göre ve öğrencilerin
@@ -87,14 +88,14 @@
               менен кызматкерлеринин пайдалуу, туура жана гигиеналык талаптарга жооп берген шартта тамактануусун камсыздайт.
               Тамак даярдоо процесси Ч. Айтматов атындагы студенттик шаарчанын ичинде жайгашкан социалдык багыттагы объектилердин
               ашканасында жүргүзүлөт. Тамак-аш менен тейлөө бөлүмү студенттер менен кызматкерлердин түшкү жана кечки
-              тамактануусун тейлейт. Университетте даярдалган ысык тамактардын бир айлык менюсу туура тамактанууну камсыз
+              тамактануусун тейлейт. Университетте даярдалган ысык тамактардын бир айлыk менюсу туура тамактанууну камсыз
               кылуу максатында студенттердин суроо-талаптары жана мезгилдин өзгөчөлүктөрү эске алынуу менен түзүлөт.
               Менюнун негизин төмөндөгүлөр түзөт: эт азыктары, тоок жана балык азыктары, ысык-муздак закускалар, салаттар,
               татуу токочтор, жемиштер ж.б. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге
               ылайык сакталып, текшерилип турат. Университеттин социалдык, спорттук жана маданий иш-чараларына катышкан
               студенттерге иш-чара учурунда эртеӊ мененки тамак, чай, кофе, түшкү жана кечки тамак, тез татым азыктары
               берилип турат. Кызматкерлер атайын форма: баш кийим, кол кап кийип тейлешет.  Университеттин тамак-аш инженерлери
-              жана тамак-аш технологдору жыл мезгилине жараша талап кылынган калорияны эске алуу менен бир айлык ысык тамактын
+              жана тамак-аш технологдору жыл мезгилине жараша талап кылынган калорияны эске алуу менен бир айлыk ысык тамактын
               менюсун түзүшөт жана ал окуу жайыбыздын интернет-баракчасына жайгаштырылат.">
             </p>
           </div>
@@ -158,7 +159,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

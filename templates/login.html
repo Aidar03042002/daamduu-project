@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -15,8 +16,8 @@
 
 
     <!-- Proje CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive-style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive-style.css' %}">
 
     <style>
         body {
@@ -68,7 +69,7 @@
                 <div class="card text-center">
 
                     <!-- Logo -->
-                    <img id="logo-img" src="images/Daamduu Tamak logo.png" alt="Logo"
+                    <img id="logo-img" src="{% static 'images/Daamduu Tamak logo.png' %}" alt="Logo"
                         class="img-fluid mx-auto d-block mb-3" style="max-width: 120px;">
 
                     <!-- Hoşgeldiniz Yazısı -->

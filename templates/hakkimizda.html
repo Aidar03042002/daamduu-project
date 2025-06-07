@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -9,8 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/responsive-style.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive-style.css' %}">
   <style>
     .btn-outline-warning.active {
       box-shadow: none !important;
@@ -59,7 +60,7 @@
     <nav class="navbar navbar-expand-lg navigation-wrap">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img id="logo-img" src="images/Daamduu Tamak logo.png" alt="logo" />
+          <img id="logo-img" src="{% static 'images/Daamduu Tamak logo.png' %}" alt="logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,7 +108,7 @@
         <div class="text-content text-center mt-4 pb-5">
           <h2 data-lang-tr="Hakkımızda" data-lang-kg="Биз жөнүндө"></h2>
           <!-- <p data-lang-tr="Hakkımızda"
-            data-lang-kg="Бул жерде кампусубузда жайгашкан ашкана, баарлашуу жайы, чай бакчасы, бешбармак боз үйү, кантин жана кафетериялар тууралуу маалыматтарды аласыз.">
+            data-lang-kg="Бул жерде кампусубузда жайгашкан ашкана, баарлашуу жайы, чай бакчасы, бешбармак боз үйү, кантин жана кафеteриялар тууралуу маалыматтарды аласыз.">
           </p> -->
         </div>
         <!-- Sekmeler -->
@@ -132,7 +133,7 @@
         <!-- Dinamik İçerik Alanı -->
         <div class="row align-items-center" id="dynamic-content">
           <div class="col-lg-6 col-md-12 mb-lg-0 mb-4">
-            <img id="section-image" src="images/ktmu.png" class="img-fluid rounded shadow-image">
+            <img id="section-image" src="{% static 'images/ktmu.png' %}" class="img-fluid rounded shadow-image">
           </div>
           <div class="col-lg-6 col-md-12 ps-lg-5 text-overlay">
             <h2 id="section-title" data-lang-tr="Kampüs" data-lang-kg="Кампус">Kampüs</h2>
@@ -168,22 +169,22 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="carousel-caption">
-                    <img src="images/review/yemekhane.jpg" alt="review" />
+                    <img src="{% static 'images/review/yemekhane.jpg' %}" alt="review" />
                     <h5 data-lang-tr="Yemekhane" data-lang-kg="Ашкана"></h5>
                     <p style="text-align: justify;" data-lang-tr="Üniversitemizin
                     öğrencilerinin ve çalışanlarının yemek
-                    ihtiyaçlarını gidermek maksadıyla kampüsümüz dâhilinde ve Merkez Bina’da bulunan
+                    ihtiyaçlarını gidermek maksadıyla kampüsümüz dâhilinde ve Merkez Bina'da bulunan
                     yemekhanelerde hizmet sunulmaktadır. Üniversitemizin öğrenci evlerinde
                     barınan öğrenciler için de ücretsiz kahvaltı verilmektedir. Üniversitemiz
                     öğrencileri ile idari ve akademik personelinin sağlıklı, dengeli ve hijyenik
                     beslenmesini amaçlamaktadır."
-                      data-lang-kg="Университеттин студенттеринин жана кызматкерлеринин тамактануусун камсыздоо максатында студенттик шаарчанын аймагында жана башкы корпусунда жайгашкан ашканаларда тейлөө кызматы көрсөтүлөт. Университеттин студенттери менен кызматкерлеринин пайдалуу, туура жана гигиеналык талаптарга жооп берген шартта тамактануусун камсыздайт.">
+                      data-lang-kg="Университеттин студенттеринин жана кызматкерлеринин тамактануусун камсыздоо максатында студенттик шаарчанын аймагында жана башкы корпусунда жайгашкан ашканаларда тейлөө кызматы көрсөтүлөт. Университеттин студенттери менен кызматкерлеринин пайдалуu, туура жана гигиеналык талаптарга жооп берген шартта тамактануусун камсыздайт.">
                     </p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="carousel-caption">
-                    <img src="images/review/Oba çay bahçe.jpg" alt="review" />
+                    <img src="{% static 'images/review/Oba çay bahçe.jpg' %}" alt="review" />
                     <h5 data-lang-tr="Oba Çay Bahçesi" data-lang-kg="Боз үй чай бакчасы"></h5>
                     <p style="text-align: justify;" data-lang-tr="KTMÜ öğrencileri ile
                     akademik ve idari personelin hızlıca beslenme
@@ -191,41 +192,41 @@
                     yerleşkelerin biri - 2020-2021 Eğitim-Öğretim yılında faaliyete geçen Oba
                     Çay Bahçesidir. Her gün sabah 09:00-23:00 saatleri arasında
                     içeceklerle birlikte, çeşitli gıda ürünleri satışa sunulmaktadır."
-                      data-lang-kg="Кыргыз-Түрк Манас университетинин студенттеринин, академиялык жана административдик персоналынын тез тамактануусун камсыздоочу жайлардын бири - 2020-2021 Окуу жылында ачылган Боз үй чай бакчасы. Чай бакчасында күн сайын саат 09:00дон 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат. ">
+                      data-lang-kg="Кыргыз-Түрк Манас университетинин студенттеринин, академиялык жана административдик персоналынын тез тамактануусун камсыздоочу жайлардын бири - 2020-2021 Окуу жылында ачылган Боз үй чай бакчасы. Чай бакчасында күн сайын саат 09:00дон 23:00го чейин суусундуkтар менен бирге түрдүү азык-түлүктөр сатылат. ">
                     </p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="carousel-caption">
-                    <img src="images/review/kıraathane1.jpg" alt="review" />
+                    <img src="{% static 'images/review/kıraathane1.jpg' %}" alt="review" />
                     <h5 data-lang-tr="Türk Dünyası Millet Kıraathanesi" data-lang-kg="Окуу жана баарлашуу борбору"></h5>
                     <p style="text-align: justify;" data-lang-tr="Türk Dünyası Millet
                     Kıraathanesinde ürün çeşitliliğine özen gösterilerek
                     öğrencilerimize ve personellere yiyecek ve içecek servisi sunmaktadır.
-                    Kantinden yararlananların sayısı günlük 2000’den 3000’e kadar sayıya
+                    Kantinden yararlananların sayısı günlük 2000'den 3000'e kadar sayıya
                     ulaşabilmektedir. Her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet
                     verilmektedir."
-                      data-lang-kg="Буфет кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат.">
+                      data-lang-kg="Буфет кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө. Сатыkка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат.">
                     </p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="carousel-caption">
-                    <img src="images/review/kantin.png" alt="review" />
+                    <img src="{% static 'images/review/kantin.png' %}" alt="review" />
                     <h5 data-lang-tr="Kantin ve Kafeteryalar" data-lang-kg="Кантин жана кафетериялар"></h5>
                     <p style="text-align: justify;" data-lang-tr="Üniversitemizin
                     kantin-kafeteryalarından yararlananların sayısı
-                    günlük 2000’den 3000’e kadar sayıya ulaşabilmektedir. Öğrenciler ve çalışanlar için
+                    günlük 2000'den 3000'e kadar sayıya ulaşabilmektedir. Öğrenciler ve çalışanlar için
                     yiyecek ve içecek servisi bir çok kafeteryada
                     hızlı yiyecek (fastfood) türlerini her gün sabah saat 08:00'dan akşam saat
                     23:00'a kadar sunmaktadır."
-                      data-lang-kg="Университеттин буфеттеринин кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Буфеттерде студенттердин тез тамактануусун камсыздоо үчүн эртең мененки саат 08:00дон кечки 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат.">
+                      data-lang-kg="Университеттин буфеттеринин кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Буфеттерде студенттердин тез тамактануусун камсыздоо үчүн эртең мененки саат 08:00дон кечки 23:00го чейин суусундуkтар менен бирге түрдүү азык-түлүктөр сатылат.">
                     </p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <div class="carousel-caption">
-                    <img src="images/review/Beşparmak.jpg" alt="review" />
+                    <img src="{% static 'images/review/Beşparmak.jpg' %}" alt="review" />
                     <h5 data-lang-tr="Beşparmak Çadırı" data-lang-kg="Бешбармак боз үйү"></h5>
                     <p style="text-align: justify;" data-lang-tr="2023 Aralık ayında
                     hizmete açılan Beşparmak Çadırında çeşitli hazır
@@ -234,7 +235,7 @@
                     hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını
                     gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet
                     verilmektedir."
-                      data-lang-kg="2023-жылдын декабрь айында ачылган Бешбармак боз үйүндө ар түрдүү даяр азыктар, кондитердик азыктар, ысык жана муздак суусундуктар, пиде, пицца, лахмажун, гөзлеме, тост жб. көптөгөн ассортимент сунушталат. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө.">
+                      data-lang-kg="2023-жылдын декабрь айында ачылган Бешбармак боз үйүндө ар түрдүү даяр азыктар, кондитердик азыктар, ысык жана муздак суусундуkтар, пиде, пицца, лахмажун, гөзлеме, тост жб. көптөгөн ассортимент сунушталат. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө.">
                     </p>
                   </div>
                 </div>
@@ -298,7 +299,7 @@
           kg: "Ашкана"
         },
         description: {
-          tr: "Üniversitemizin öğrencilerinin ve çalışanlarının yemek ihtiyaçlarını gidermek maksadıyla kampüsümüz dâhilinde ve Merkez Bina’da bulunan yemekhanelerde hizmet sunulmaktadır. Üniversitemizin öğrenci evlerinde barınan öğrenciler için de ücretsiz kahvaltı verilmektedir. Hayırseverlik amacıyla bazı yardımsever çalışanlarımız tarafından kafeteryalarda belirli bir öğrenci kategorisi için de ücretsiz yiyecek verilmektedir. Bu hizmetler özel biçimde hazırlanan elektronik/dijital programa uygun olarak yürütülmektedir.",
+          tr: "Üniversitemizin öğrencilerinin ve çalışanlarının yemek ihtiyaçlarını gidermek maksadıyla kampüsümüz dâhilinde ve Merkez Bina'da bulunan yemekhanelerde hizmet sunulmaktadır. Üniversitemizin öğrenci evlerinde barınan öğrenciler için de ücretsiz kahvaltı verilmektedir. Hayırseverlik amacıyla bazı yardımsever çalışanlarımız tarafından kafeteryalarda belirli bir öğrenci kategorisi için de ücretsiz yiyecek verilmektedir. Bu hizmetler özel biçimde hazırlanan elektronik/dijital programa uygun olarak yürütülmektedir.",
           kg: "Университеттин студенттеринин жана кызматкерлеринин тамактануусун камсыздоо максатында студенттик шаарчанын аймагында жана башкы корпусунда жайгашкан ашканаларда тейлөө кызматы көрсөтүлөт.  Университеттин жатаканасында жашаган студенттер үчүн акысыз  эртең мененки тамак сунушталат. Кайрымдуулук иш катары кызматкерлерибиздин өз ыктыярдуу көмөгү менен кафетерияларда белгилүү бир категориядагы студенттер үчүн акысыз тейлөө кызматы жүргүзүлөт. Бул кызмат атайын жасалып чыккан электрондук программа аркылуу негизделген."
         },
         image: "images/about/yemekhane.png"
@@ -310,7 +311,7 @@
         },
         description: {
           tr: "Kırgızistan-Türkiye Manas Üniversitesi öğrencileri ile akademik ve idari personelin hızlıca beslenme ihtiyacını karşılamak üzere hizmet sunmakta olan yerleşkelerin biri - 2020-2021 Eğitim-Öğretim yılında faaliyete geçen Oba Çay Bahçesidir. Doğayla iç içe, huzurlu ortamıyla öğrencilerin en sevdiği dinlenme alanıdır. Çay Bahçesinde her gün sabah 09:00-23:00 saatleri arasında içeceklerle birlikte, çeşitli gıda ürünleri satışa sunulmaktadır.",
-          kg: "Кыргыз-Түрк Манас университетинин студенттеринин, академиялык жана административдик персоналынын тез тамактануусун камсыздоочу жайлардын бири - 2020-2021 Окуу жылында ачылган Боз үй чай бакчасы. Чай бакчасында күн сайын саат 09:00дон 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат. "
+          kg: "Кыргыз-Түрк Манас университетинин студенттеринин, академиялык жана административдик персоналынын тез тамактануусун камсыздоочу жайлардын бири - 2020-2021 Окуу жылында ачылган Боз үй чай бакчасы. Чай бакчасында күн сайын саат 09:00дон 23:00го чейин суусундуkтар менен бирге түрдүү азык-түлүктөр сатылат. "
         },
         image: "images/about/Çay bahçe.png"
       },
@@ -320,8 +321,8 @@
           kg: "Окуу жана баарлашуу борбору"
         },
         description: {
-          tr: "Türk Dünyası Millet Kıraathanesinde ürün çeşitliliğine özen gösterilerek öğrencilerimize ve personellere yiyecek ve içecek servisi sunmaktadır. Kantinden yararlananların sayısı günlük 2000’den 3000’e kadar sayıya ulaşabilmektedir. Kıraathanede hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, pide, pizza çeşitleri, köfte, lahmacun, sandviç, tost, salata, tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet verilmektedir. Satışa sunulan yiyecek ve içeceklerin her birinden numune alınıp sıhhi kurallara uygun biçimde 72 saat süreyle muhafaza ve kontrol edilmektedir.",
-          kg: "Окуу жана баарлашуу борборунда студенттерибизге жана персоналдарга ар түрдүү азыктар сунушталып кызмат берилүүдө. Буфет кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Окуу жана баарлашуу борбору кафетериясында кондитердик азыктар, нан азыктары, ысык жана муздак суусундуктар, пиде, пицца, лахмажун, сэндвич, тост, салат, таттуулар жб. көптөгөн ассортимент сунушталат. Күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат."
+          tr: "Türk Dünyası Millet Kıraathanesinde ürün çeşitliliğine özen gösterilerek öğrencilerimize ve personellere yiyecek ve içecek servisi sunmaktadır. Kantinden yararlananların sayısı günlük 2000'den 3000'e kadar sayıya ulaşabilmektedir. Kıraathanede hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, pide, pizza çeşitleri, köfte, lahmacun, sandviç, tost, salata, tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet verilmektedir. Satışa sunulan yiyecek ve içeceklerin her birinden numune alınıp sıhhi kurallara uygun biçimde 72 saat süreyle muhafaza ve kontrol edilmektedir.",
+          kg: "Окуу жана баарлашуу борборунда студенттерибизге жана персоналдарга ар түрдүү азыктар сунушталып кызмат берилүүдө. Буфет кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Окуу жана баарлашуу борбору кафетериясында кондитердик азыктар, нан азыктары, ысык жана муздак суусундуkтар, пиде, пицца, лахмажун, сэндвич, тост, салат, таттуулар жб. көптөгөн ассортимент сунушталат. Күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө. Сатыkка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат."
         },
         image: "images/about/kıraathane.png"
       },
@@ -331,8 +332,8 @@
           kg: "Кантин жана кафетериялар"
         },
         description: {
-          tr: "Üniversitemizin kantin-kafeteryalarından yararlananların sayısı günlük 2000’den 3000’e kadar sayıya ulaşabilmektedir. Kafeteryalarda hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, pide, pizza, lahmacun, sandviç, tost, salata, tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanıp isteklilere satılmaktadır. Kantin-Kafeteryalarda öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için her gün sabah saat 08:00'dan akşam saat 23:00'a kadar içeceklerle birlikte çeşitli gıda ürünleri satışa sunulmaktadır. Satışa sunulan yiyecek ve içeceklerin her birinden numune alınıp sıhhi kurallara uygun biçimde 72 saat süreyle muhafaza ve kontrol edilmektedir.",
-          kg: "Университеттин буфеттеринин кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Кафетерияларда  кондитердик азыктар, нан азыктары, ысык жана муздак суусундуктар, пиде, пицца, сэндвич, лахмажун, тост, салат,таттуулар жб. көптөгөн ассортимент сунушталат. Буфеттерде студенттердин тез тамактануусун камсыздоо үчүн эртең мененки саат 08:00дон кечки 23:00го чейин суусундуктар менен бирге түрдүү азык-түлүктөр сатылат. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат."
+          tr: "Üniversitemizin kantin-kafeteryalarından yararlananların sayısı günlük 2000'den 3000'e kadar sayıya ulaşabilmektedir. Kafeteryalarda hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, pide, pizza, lahmacun, sandviç, tost, salata, tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanıp isteklilere satılmaktadır. Kantin-Kafeteryalarda öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için her gün sabah saat 08:00'dan akşam saat 23:00'a kadar içeceklerle birlikte çeşitli gıda ürünleri satışa sunulmaktadır. Satışa sunulan yiyecek ve içeceklerin her birinden numune alınıp sıhhi kurallara uygun biçimde 72 saat süreyle muhafaza ve kontrol edilmektedir.",
+          kg: "Университеттин буфеттеринин кызматынан пайдаланган кишинин саны бир күндө 2000ден 3000ге чейин жетет. Кафетерияларда  кондитердик азыктар, нан азыктары, ысык жана муздак суусундуkтар, пиде, пицца, сэндвич, лахмажун, тост, салат,таттуулар жб. көптөгөн ассортимент сунушталат. Буфеттерде студенттердин тез тамактануусун камсыздоо үчүн эртең мененки саат 08:00дон кечки 23:00го чейин суусундуkтар менен бирге түрдүү азык-түлүктөр сатылат. Сатыkка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат."
         },
         image: "images/about/kantin.png"
       },
@@ -343,7 +344,7 @@
         },
         description: {
           tr: "2023 Aralık ayında hizmete açılan Beşparmak Çadırında çeşitli hazır ürünler, unlu mamûller, sıcak ve soğuk yiyecekler, gözleme, pide, pizza çeşitleri, tost, krep ve tatlı türleri vb. pek çok değişik karışık gıda ürünleri hazırlanarak satılmaktadır. Öğrencilerin hızlıca beslenme ihtiyacını gidermeleri için, her gün sabah 08:00'dan akşam 23:00'a kadar sürekli hizmet verilmektedir.",
-          kg: "2023-жылдын декабрь айында ачылган Бешбармак боз үйүндө ар түрдүү даяр азыктар - нан азыктары, кондитердик азыктар, ысык жана муздак суусундуктар, пиде, пицца, лахмажун, гөзлеме, тост, куймактын түрлөрү жб. көптөгөн ассортимент сунушталат. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө."
+          kg: "2023-жылдын декабрь айында ачылган Бешбармак боз үйүндө ар түрдүү даяр азыктар - нан азыктары, кондитердик азыктар, ысык жана муздак суусундуkтар, пиде, пицца, лахмажун, гөзлеме, тост, куймактын түрлөрү жб. көптөгөн ассортимент сунушталат. Студенттердин тез тамактануусун камсыздоо үчүн күн сайын эртең мененки саат 08:00дон 23:00го чейин үзгүлтүксүз кызмат көрсөтүлүүдө."
         },
         image: "images/about/Beşparmak.png"
       }
@@ -386,7 +387,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

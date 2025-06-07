@@ -3,8 +3,10 @@ from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
+    path('', views.register_page, name='register'),  # Root goes to registration
     path("create-payment/", views.create_payment, name="create-payment"),
     path("stripe/webhook/", views.stripe_webhook, name="stripe-webhook"),
+    path("payment/<str:status>/", views.payment_status, name="payment-status"),
     path("start-registration/", views.EmailStartRegistrationView.as_view(), name="start-registration"),
     path("verify-code/", views.EmailVerifyCodeView.as_view(), name="verify-code"),
     path("menu/", views.MenuListCreateView.as_view(), name="menu-list-create"),

@@ -18,6 +18,32 @@ from .serializers import (
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+def payment_status(request, status):
+    """
+    Handle all payment statuses in a single view
+    status can be: success, failure, pending, refund, refund_success, refund_failure,
+    refund_pending, refund_cancel, refund_cancel_success, refund_cancel_failure,
+    refund_cancel_pending
+    """
+    status_messages = {
+        'success': 'Ödemeniz başarıyla tamamlandı.',
+        'failure': 'Ödeme işlemi sırasında bir hata oluştu.',
+        'pending': 'Ödemeniz işleme alındı, lütfen bekleyin.',
+        'refund': 'İade talebiniz alındı.',
+        'refund_success': 'İade işleminiz başarıyla tamamlandı.',
+        'refund_failure': 'İade işlemi sırasında bir hata oluştu.',
+        'refund_pending': 'İade talebiniz işleme alındı, lütfen bekleyin.',
+        'refund_cancel': 'İade talebiniz iptal edildi.',
+        'refund_cancel_success': 'İade iptal işleminiz başarıyla tamamlandı.',
+        'refund_cancel_failure': 'İade iptal işlemi sırasında bir hata oluştu.',
+        'refund_cancel_pending': 'İade iptal talebiniz işleme alındı, lütfen bekleyin.'
+    }
+    
+    return render(request, 'odeme.html', {
+        'status': status,
+        'message': status_messages.get(status, 'Bilinmeyen bir durum oluştu.')
+    })
+
 @csrf_exempt
 def create_payment(request):
     if request.method == "POST":
@@ -33,8 +59,6 @@ def create_payment(request):
 
 @csrf_exempt
 def stripe_webhook(request):
-    from django.views.decorators.csrf import csrf_exempt
-    import json
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
@@ -49,11 +73,24 @@ def stripe_webhook(request):
     if event['type'] == 'payment_intent.succeeded':
         intent = event['data']['object']
         Payment.objects.create(
-            user=None,  # Позже допишем, когда свяжем с пользователем
+            user=None,  # Will be updated when user authentication is implemented
             stripe_payment_intent=intent['id'],
             amount=intent['amount'],
             status='succeeded'
         )
+    elif event['type'] == 'payment_intent.payment_failed':
+        intent = event['data']['object']
+        Payment.objects.create(
+            user=None,
+            stripe_payment_intent=intent['id'],
+            amount=intent['amount'],
+            status='failed'
+        )
+    elif event['type'] == 'charge.refunded':
+        intent = event['data']['object']
+        payment = Payment.objects.get(stripe_payment_intent=intent['payment_intent'])
+        payment.status = 'refunded'
+        payment.save()
 
     return JsonResponse({'status': 'success'})
 
