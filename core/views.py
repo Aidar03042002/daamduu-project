@@ -95,7 +95,7 @@ def stripe_webhook(request):
     return JsonResponse({'status': 'success'})
 
 def register_page(request):
-    return render(request, 'daamduu/register.html')
+    return render(request, 'register.html')
 
 class EmailStartRegistrationView(APIView):
     def post(self, request):
