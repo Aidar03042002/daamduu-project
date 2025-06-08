@@ -1,8 +1,12 @@
 from django.db import models
 from django.utils.timezone import now, timedelta
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 class User(AbstractUser):
+    is_staff = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=True)
+
     class Role(models.TextChoices):
         USER = "USER", "Студент"
         ADMIN = "ADMIN", "Администратор"
@@ -29,28 +33,44 @@ class EmailVerificationCode(models.Model):
         return f"{self.email} - {self.code}"
 
 class ScanLog(models.Model):
-    scanner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='scans')
-    code = models.CharField(max_length=255)
+    payment = models.ForeignKey('Payment', on_delete=models.CASCADE)
+    scanned_by = models.ForeignKey(User, on_delete=models.CASCADE)
     scanned_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=[
+        ('success', 'Success'),
+        ('invalid', 'Invalid'),
+        ('used', 'Already Used')
+    ], default='success')
 
     def __str__(self):
-        return f"{self.scanner.username} → {self.code} @ {self.scanned_at}"
+        return f"{self.payment.transaction_id} - {self.scanned_by.username}"
 
 class MenuItem(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    date = models.DateField()
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='menu_items/', null=True, blank=True)
+    date = models.DateField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.title} ({self.date})"
+        return self.name
 
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stripe_payment_intent = models.CharField(max_length=255)
-    amount = models.IntegerField()
+    item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    transaction_id = models.CharField(max_length=255, unique=True)
+    status = models.CharField(max_length=20, choices=[
+        ('pending', 'Pending'),
+        ('paid', 'Paid'),
+        ('failed', 'Failed'),
+        ('refunded', 'Refunded')
+    ])
+    qr_code = models.TextField(null=True, blank=True)  # Store QR code as base64 string
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50, default="pending")
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.amount} - {self.status}"
+        return f"{self.user.username} - {self.item.name} - {self.amount}"

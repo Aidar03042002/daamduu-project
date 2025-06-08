@@ -93,8 +93,17 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'core.User'
 
 # === Stripe настройки ===
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
-STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'pk_test_your_publishable_key')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'sk_test_your_secret_key')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', 'whsec_your_webhook_secret')
+
+# Stripe Currency Settings
+STRIPE_CURRENCY = os.getenv('STRIPE_CURRENCY', 'usd')
+STRIPE_CURRENCY_SYMBOL = os.getenv('STRIPE_CURRENCY_SYMBOL', '$')
+
+# Stripe Payment Settings
+STRIPE_PAYMENT_SUCCESS_URL = os.getenv('STRIPE_PAYMENT_SUCCESS_URL', 'payment/success')
+STRIPE_PAYMENT_CANCEL_URL = os.getenv('STRIPE_PAYMENT_CANCEL_URL', 'payment/cancel')
 
 # === Google OAuth ===
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("GOOGLE_CLIENT_ID")

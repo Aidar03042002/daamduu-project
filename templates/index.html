@@ -1,15 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Daamduu Yemek</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <title>Daamduu Tamak</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" href="css/responsive-style.css" />
 </head>
@@ -17,30 +17,48 @@
 <body>
   <!-- Header Section -->
   <header>
-    <nav class="navbar navbar-expand-lg navigation-wrap">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <img id="logo-img" src="{% static 'images/Daamduu Tamak logo.png' %}" alt="logo" />
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <img src="{% static 'images/Daamduu Tamak logo.png' %}" alt="Daamduu Tamak" height="40">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-stream navbar-toggler-icon pt-3"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-1" href="login.html">
-                <i class="fas fa-sign-in-alt"></i>
-                <span data-lang-tr="Giriş Yap" data-lang-kg="Кирүү"></span>
-              </a>
-            </li>
+            {% if user.is_authenticated %}
+              {% if user.is_staff %}
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-1" href="{% url 'staff' %}">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Staff Dashboard</span>
+                  </a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-1" href="{% url 'home' %}">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                  </a>
+                </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-1" href="{% url 'logout' %}">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-1" href="{% url 'login' %}">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span>Login</span>
+                </a>
+              </li>
+            {% endif %}
           </ul>
         </div>
-      </div>
-      <div class="language-switcher">
-        <a href="?lang=kg" class="lang-link" id="kg-link">KG</a>
-        <span class="divider">|</span>
-        <a href="?lang=tr" class="lang-link" id="tr-link">TR</a>
       </div>
     </nav>
   </header>
@@ -66,7 +84,7 @@
             kahve, öğle ve akşam yemekleri, paketlenmiş yiyecekler(köfte ekmek arası, sandviç, hamburger vb.) verilir.
             Yemekhane sevisinde çalışanların tamamı özel kıyafetler (forma, eldiven ve başlık) giyerek servis
             yapmaktadır."
-              data-lang-kg="Турмуш-тиричиликти тейлөө жана кантин-кафетерия иштетүү бөлүмү университеттин студенттери менен кызматкерлеринин пайдалуу, туура жана гигиеналык талаптарга жооп берген шартта тамактануусун камсыздайт. Тамак даярдоо процесси Ч. Айтматов атындагы студенттик шаарчанын ичинде жайгашкан социалдык багыттагы объектилердин ашканасында жүргүзүлөт. Тамак-аш менен тейлөө бөлүмү студенттер менен кызматкерлердин түшкү жана кечки тамактануусун тейлейт. Университетте даярдалган ысык тамактардын бир айлыk менюсу туура тамактанууну камсыз кылуу максатында студенттердин суроо-талаптары жана мезгилдин өзгөчөлүктөрү эске алынуу менен түзүлөт. Менюнун негизин төмөндөгүлөр түзөт: эт азыктары, тоок жана балык азыктары, ысык-муздак закускалар, салаттар, татуу токочтор, жемиштер ж.б. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат. Университеттин социалдык, спорттук жана маданий иш-чараларына катышкан студенттерге иш-чара учурунда эртеӊ мененки тамак, чай, кофе, түшкү жана кечки тамак, тез татыm азыктары берилип турат. Кызматкерлер атайын форма: баш кийим, кол кап кийип тейлешет.  Университеттин тамак-аш инженерлери жана тамак-аш технологдору жыл мезгилине жараша талап кылынган калорияны эске алуу менен бир айлыk ысыk тамактын менюсун түзүшөт жана ал окуу жайыбыздын интернет-баракчасына жайгаштырылат.">
+              data-lang-kg="Турмуш-тиричиликти тейлөө жана кантин-кафетерия иштетүү бөлүмү университеттин студенттери менен кызматкерлеринин пайдалуу, туура жана гигиеналык талаптарга жооп берген шартта тамактануусун камсыздайт. Тамак даярдоо процесси Ч. Айтматов атындагы студенттик шаарчанын ичинде жайгашкан социалдык багыттагы объектилердин ашканасында жүргүзүлөт. Тамак-аш менен тейлөө бөлүмү студенттер менен кызматкерлердин түшкү жана кечки тамактануусун тейлейт. Университетте даярдалган ысык тамактардын бир айлыk менюсу туура тамактанууну камсыз кылуu максатында студенттердин суроо-талаптары жана мезгилдин өзгөчөлүктөрү эске алынуу менен түзүлөт. Менюнун негизин төмөндөгүлөр түзөт: эт азыктары, тоок жана балык азыктары, ысык-муздак закускалар, салаттар, татуу токочтор, жемиштер ж.б. Сатыкка коюлган тамак-аштардын ар биринен күнүгө  үлгүлөр алынып, 72 саат эрежелерге ылайык сакталып, текшерилип турат. Университеттин социалдык, спорттук жана маданий иш-чараларына катышкан студенттерге иш-чара учурунда эртеӊ мененки тамак, чай, кофе, түшкү жана кечки тамак, тез татыm азыктары берилип турат. Кызматкерлер атайын форма: баш кийим, кол кап кийип тейлешет.  Университеттин тамак-аш инженерлери жана тамак-аш технологдору жыл мезгилине жараша талап кылынган калорияны эске алуу менен бир айлыk ысыk тамактын менюсун түзүшөт жана ал окуу жайыбыздыn интернет-баракчасына жайгаштырылат.">
             </p>
           </div>
         </div>
@@ -189,7 +207,7 @@
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{% static 'js/main.js' %}"></script>
 </body>
 
