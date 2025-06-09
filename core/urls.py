@@ -21,6 +21,13 @@ urlpatterns = [
     path("team/", TemplateView.as_view(template_name="takim.html"), name="team"),
     path("reset-password/", TemplateView.as_view(template_name="reset-password.html"), name="reset-password"),
     path("admin-login/", TemplateView.as_view(template_name="admin-login.html"), name="admin-login"),
+    path("reset-password-admin/", TemplateView.as_view(template_name="reset-password-admin.html"),
+         name="reset-password-admin"),
+    path("admin-panel/", TemplateView.as_view(template_name="admin.html"), name="admin-panel"),
+    path("admin-menu/", TemplateView.as_view(template_name="admin-menu.html"), name="admin-menu"),
+    path("admin-qr/", TemplateView.as_view(template_name="admin-qr-tarayici.html"), name="admin-qr"),
+    path("bugun-menu/", TemplateView.as_view(template_name="bugun-menu.html"), name="bugun-menu"),
+    path("haftalik-menu/", TemplateView.as_view(template_name="haftalik-menu.html"), name="haftalik-menu"),
     path("staff/", views.staff_view, name="staff"),  # New staff page
     path("admin-users/", views.admin_users_view, name="admin-users"),  # New admin users page
 ]

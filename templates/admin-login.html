@@ -75,7 +75,7 @@
       E-posta ya da şifre hatalı!
     </p>
     <p class="mt-2">
-      <a href="reset-password-admin.html" class="text-decoration-none text-muted" style="font-size: 0.9rem;">
+      <a href="{% url 'reset-password-admin' %}" class="text-decoration-none text-muted" style="font-size: 0.9rem;">
         <i class="bi bi-key-fill me-1"></i>
         <span data-lang-tr="Şifremi unuttum" data-lang-kg="Сырсөзүмдү унуттум"></span>
       </a>
@@ -90,7 +90,7 @@
       const password = document.getElementById('admin-password').value;
 
       if (email === 'admin@manas.edu.kg' && password === '123456') {
-        window.location.href = 'admin.html';
+        window.location.href = '{% url "admin-panel" %}';
       } else {
         document.getElementById('login-error').style.display = 'block';
       }

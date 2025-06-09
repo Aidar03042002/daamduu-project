@@ -17,7 +17,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
 
     if (response.ok) {
         // Başarılı giriş
-        window.location.href = "/ana-sayfa.html";
+        window.location.href = "/home/";
     } else {
         // Hatalı giriş
         document.getElementById("error-msg").innerText = "Kullanıcı adı veya şifre yanlış";

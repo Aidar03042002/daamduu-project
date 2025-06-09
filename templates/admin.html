@@ -15,7 +15,7 @@
 <body>
   <header class="bg-dark text-white text-center pb-2 mb-4">
     <div class="container py-2 d-flex justify-content-end">
-      <a class="nav-link d-flex align-items-center gap-1 mt-4" href="index.html">
+      <a class="nav-link d-flex align-items-center gap-1 mt-4" href="{% url 'index' %}">
         <i class="fas fa-sign-out-alt"></i>
         <span data-lang-tr="Çıkış Yap" data-lang-kg="Чыгуу"></span>
       </a>
@@ -40,7 +40,7 @@
               <i class="fas fa-utensils me-2"></i>Menü Yönetimi
             </h3>
             <p data-lang-tr="Menüleri düzenleyin." data-lang-kg="Менюларды түзөтүңүз.">Menüleri düzenleyin.</p>
-            <a href="admin-menu.html" class="btn btn-outline-secondary w-100" data-lang-tr="Menüleri düzenleyin"
+            <a href="{% url 'admin-menu' %}" class="btn btn-outline-secondary w-100" data-lang-tr="Menüleri düzenleyin"
               data-lang-kg="Менюларды түзөт">Menüleri Yönet</a>
           </div>
         </div>
@@ -51,7 +51,7 @@
               <i class="fas fa-users-cog me-2"></i>Kullanıcı Yönetimi
             </h3>
             <p data-lang-tr="Kullanıcıları yönetin." data-lang-kg="Колдонуучуларды башкар.">Kullanıcıları yönetin.</p>
-            <a href="admin-users.html" class="btn btn-outline-secondary w-100" data-lang-tr="Kullanıcıları Yönet"
+            <a href="{% url 'admin-users' %}" class="btn btn-outline-secondary w-100" data-lang-tr="Kullanıcıları Yönet"
               data-lang-kg="Колдонуучуларды башкар">Kullanıcıları Yönet</a>
           </div>
         </div>
@@ -62,7 +62,7 @@
               <i class="fas fa-qrcode me-2"></i>QR Kod Tarayıcı
             </h3>
             <p data-lang-tr="QR Kodu Tarayın." data-lang-kg="QR кодду сканда.">QR Kodu Tarayın.</p>
-            <a href="admin-qr-tarayici.html" class="btn btn-outline-secondary w-100" data-lang-tr="QR Kodu Tara"
+            <a href="{% url 'admin-qr' %}" class="btn btn-outline-secondary w-100" data-lang-tr="QR Kodu Tara"
               data-lang-kg="QR кодду сканерле">QR Kodu Tara</a>
           </div>
         </div>

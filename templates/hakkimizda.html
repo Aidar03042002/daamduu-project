@@ -69,24 +69,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html" data-lang-tr="Ana Sayfa"
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" data-lang-tr="Ana Sayfa"
                 data-lang-kg="Башкы бет"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="bugun-menu.html" data-lang-tr="Bugün Menüde" data-lang-kg="Бүгүнкү меню"></a>
+              <a class="nav-link" href="{% url 'bugun-menu' %}" data-lang-tr="Bugün Menüde" data-lang-kg="Бүгүнкү меню"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="haftalik-menu.html" data-lang-tr="Haftalık Menü"
+              <a class="nav-link" href="{% url 'haftalik-menu' %}" data-lang-tr="Haftalık Menü"
                 data-lang-kg="Жумалык меню"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="hakkimizda.html" data-lang-tr="Hakkımızda" data-lang-kg="Биз жөнүндө"></a>
+              <a class="nav-link" href="{% url 'about' %}" data-lang-tr="Hakkımızda" data-lang-kg="Биз жөнүндө"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="takim.html" data-lang-tr="Takım" data-lang-kg="Курам"></a>
+              <a class="nav-link" href="{% url 'team' %}" data-lang-tr="Takım" data-lang-kg="Курам"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-1" href="index.html">
+              <a class="nav-link d-flex align-items-center gap-1" href="{% url 'index' %}">
                 <i class="fas fa-sign-out-alt"></i>
                 <span data-lang-tr="Çıkış Yap" data-lang-kg="Чыгуу"></span>
               </a>
